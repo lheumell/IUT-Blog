@@ -4,11 +4,13 @@ require_once '../includes/config.php';
 
     if(!empty($_POST['bouton'])){
         $title = $_POST['title'] ;
-        $content = $_POST['Content'] ;
-        create_article($title,$content) ;
+        $content = $_POST['Content'] ;  
+        create_article($title,$content,$_SESSION['id']) ;
         header("location:index.php") ;
         
     }
+
+
 ?>
 
 <html>

@@ -31,7 +31,12 @@ if(!empty($_POST['subconnexion'])){
         $req = $req->fetch() ;
         $_SESSION['email'] = $req['email'] ;
         $_SESSION['nom'] = $req['nom'] ;
+        $_SESSION['id'] = $req['id'] ;
+
         
+    }
+    else{
+        echo 'L\'utlisateur n\'existe pas' ;
     }
 
 }
@@ -94,9 +99,11 @@ if(!empty($_POST['subconnexion'])){
                             <a class="nav-link" data-toggle="modal" data-target="#modalLoginForm">Connexion</a>
                         </li>
                         <?php }?>
+                        <?php if(!empty($_SESSION['nom'])){?>
                         <li class="nav-item">
                             <a class="nav-link" href="create_article.php">Créer un article</a>
                         </li>
+                        <?php }?>
                     </ul>
                  <?php if(isset($_SESSION['nom'])) {
                      ?>
@@ -227,6 +234,7 @@ if(!empty($_POST['subconnexion'])){
                     <div class="col-md-4">
                         <div class="card-deck">
 
+
                             <!-- Card -->
                             <div class="card mb-4">
 
@@ -236,8 +244,11 @@ if(!empty($_POST['subconnexion'])){
                                     <h4 class="card-title"><?= $post['title'] ?></h4>
                                     <!--Text-->
                                     <p class="card-text" style="font-weight: bold"><?= $post['content'] ?></p>
+                                    <p><?= recuperer_nom($post['iduser']) ;  ?></p>
+                                    <?php if(isset($_SESSION['nom'])){ ?>
                                     <a href="index.php?id=<?= $post['id'] ?>" class="btn btn-danger btn-rounded">supprimer</a>
                                     <a href="modifier_article.php?id=<?= $post['id'] ?>" class="btn btn-warning btn-rounded">Modifier</a>
+                                    <?php } ?>
                                     <a href="recuperer.php?id=<?= $post['id'] ?>" class="btn btn-info btn-rounded">..plus</a>
                                 </div>
 

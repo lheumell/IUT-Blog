@@ -97,8 +97,8 @@ session_start();
             <div class="col-md-4">
                 <label for="title">Title</label><br>
                 <input type="text" name="title" value="<?= $rec['title'] ?>"> <br>       
-                <label for="Content">Content</label><br>
-                <textarea name="Content" id="Content" cols="50" rows="5"><?= $rec['content'] ?></textarea><br>
+                <label for="content">Content</label><br>
+                <textarea name="content" id="content" cols="50" rows="5"><?= $rec['content'] ?></textarea><br>
                 <input type="submit" name="bouton" value="modifier">
             </div>
         </div>

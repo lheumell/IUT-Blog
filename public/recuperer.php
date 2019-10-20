@@ -75,12 +75,14 @@
 
         </div>
     </div>
-    <div class="container">
-        <div class="row-mt-50">
-            <p><?= $rec['title'] ?></p>
-            <p><?= $rec['content'] ?></p>
+    <div class="row">
+        <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <p><?= $rec['title'] ?></p>
+                <p><?= $rec['content'] ?></p>
+               
+            </div>
         </div>
-    </div>
            <!-- SCRIPTS -->
     <!-- JQuery -->
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>

@@ -7,11 +7,11 @@ function get_all_posts()
     return $sth->fetchAll();
 }
 
-function create_article($title, $content)
+function create_article($title, $content, $iduser)
 {
     global $db;
-    $sth = $db->prepare("INSERT INTO posts(title,content) VALUES (?,?)") ;
-    $sth->execute(array($title,$content)) ;
+    $sth = $db->prepare("INSERT INTO posts(title,content,iduser) VALUES (?,?,?)") ;
+    $sth->execute(array($title,$content,$iduser)) ;
 }
 
 function recuperer_article($id)
@@ -87,4 +87,13 @@ function connexion($email,$password)
     $sth = $db->prepare("SELECT * FROM inscription WHERE email= ? AND password= ? ") ;
     $sth->execute(array($email,$password)) ;
     return $sth;
+}
+
+function recuperer_nom($id)
+{
+    global $db ;
+    $sth = $db->prepare("SELECT nom FROM inscription WHERE id = ?") ;
+    $sth->execute(array($id)) ;
+    $sth = $sth->fetch() ;
+    return $sth['nom'];
 }
